@@ -1,0 +1,6 @@
+TF_LOG_PATH=terraform.log
+TF_LOG=DEBUG
+
+TF_VAR_aws_region=us-east-1
+TF_VAR_aws_access_key=replace_with_value
+TF_VAR_aws_secret_access_key=replace_with_value
