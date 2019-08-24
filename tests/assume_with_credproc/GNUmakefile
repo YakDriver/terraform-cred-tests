@@ -18,6 +18,7 @@ actual_test:
 
 destroy:
 	@echo "$(color)===> Destroying resources...$(color_off)"
+	@aws iam delete-role --role-name $(TF_VAR_role_name)
 	@terraform destroy -input=false -force || (echo "$(color)===> Destroy resources FAILED. Dangling resources may remain. (Run 'make clean_files' to clean up files.)$(color_off)"; exit 1)
 
 clean_files:
