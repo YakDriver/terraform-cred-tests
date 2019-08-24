@@ -10,6 +10,7 @@ default: test
 
 actual_test:
 	@echo "$(color)===> Running test $(current_dir)...$(color_off)"
+	@env | sort > make_env.log
 	@terraform -v
 	@terraform init
 	@terraform apply -auto-approve || (echo "$(color)===> Test FAILED with code $$?! (Run 'make clean' to clean up.)$(color_off)"; exit 1)

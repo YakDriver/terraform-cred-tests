@@ -15,6 +15,7 @@ $ make test
 | ------------- | ------------- | ------------- |
 | [static_terraform](tests/static_terraform)  | :+1:  | None  |
 | [assume_with_credproc](tests/assume_with_credproc)  | :x:  | [hashicorp/aws-sdk-go-base#4](https://github.com/hashicorp/aws-sdk-go-base/issues/4)  |
+| [credproc_without_assume](tests/credproc_without_assume)  | :+1:  | None |
 | [assume_after_create](tests/assume_after_create)  | :x:  | [terraform-providers/terraform-provider-aws#6566](https://github.com/terraform-providers/terraform-provider-aws/issues/6566) |
 
 ## contributions

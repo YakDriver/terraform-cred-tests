@@ -38,17 +38,3 @@ EOF
     command = "sleep 30"
   }
 }
-
-# configure this provider alias to use the IAM Role created above
-provider "aws" {
-  profile = "credproc"
-  alias   = "iamrole"
-
-  assume_role {
-    role_arn = "${aws_iam_role.tf-test-6d3868d9bed3.arn}"
-  }
-}
-
-data "aws_caller_identity" "new_role" {
-  provider = "aws.iamrole"
-}

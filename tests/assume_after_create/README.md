@@ -8,7 +8,7 @@ This tests assumption of a newly created role. Due to eventual consistency, it t
 https://github.com/terraform-providers/terraform-provider-aws/issues/6566
 
 ## creds source
-Credentials in this test come from the configured AWS CLI profile and `~/.aws/credentials`.
+Credentials in this test come from your configured AWS CLI profile and `~/.aws/credentials`.
 
 ## run the test
 

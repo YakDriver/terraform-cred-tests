@@ -1,11 +1,11 @@
-# assume with credproc
-This tests assumption of a role while using a credential process. Because of logic issues in the way credentials are processed, when on the credential process logical path, you cannot also assume a role. This is basically the same test as [credproc_without_assume](../credproc_without_assume) but adding the assumption of a role to show that causes problems.
+# credproc without assume
+This tests using the credential process to obtain credentials. This is basically the same test as [assume_with_credproc](../assume_with_credproc) without the assumption of a role to show everything else works.
 
 ## current status
-### FAILING :x:
+### PASSING :+1:
 
 ## related github issue
-https://github.com/hashicorp/aws-sdk-go-base/issues/4
+None
 
 ## creds source
 Credentials in this test come from a credential process, a simple Bash script that outputs the credentials.
