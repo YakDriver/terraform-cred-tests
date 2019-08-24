@@ -1,9 +1,16 @@
 # static creds
 The basic test of standard static creds, just to make sure nothing major has gone wrong.
 
+## current status
+### PASSING :+1:
+
+## related github issue
+None
+
+## creds source
 This test specifically uses static credentials defined directly in Terraform rather than in an `~/.aws/credentials` file. That is another test.
 
-# prereqs
+## run the test
 
 To run the test, follow these steps:
 

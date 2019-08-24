@@ -1,0 +1,4 @@
+TF_LOG_PATH=terraform.log
+TF_LOG=DEBUG
+
+TF_VAR_aws_region=us-east-1

@@ -9,11 +9,18 @@ Each test (each is a subdirectory of the `tests/` directory) has a README and a 
 $ make test
 ```
 
+## current tests
+
+| Test  | Status |
+| ------------- | ------------- |
+| [static_terraform](tests/static_terraform)  | :+1:  |
+| [assume_after_create](tests/assume_after_create)  | :x:  |
+
 ## contributions
 
-Adding working and, especially, non-working tests is a great help. Fork and open a pull request!
+Adding working and, especially, non-working tests by forking and opening a pull request.
 
-Making a new test is simple:
+Making a new test:
 1. Fork & clone this repo
 1. Find the most similar existing test
 1. Go to your local clone directory
@@ -21,6 +28,7 @@ Making a new test is simple:
 1. `cd tests`
 1. `cp -R existing_similar_test new_name_for_your_test`
 1. Edit the `README.md`, `dotenv` and `*.tf` files for your test
+1. Edit this `README.md` with the test name and status
 1. `git add .`
 1. `git commit -m "My awesome test"`
 1. `git push -u my-awesome-test`
@@ -68,3 +76,6 @@ provider "aws" {
   assume_role = "${var.workspace_iam_roles[terraform.workspace]}"
 }
 ```
+
+* [Pull request to fix](https://github.com/hashicorp/aws-sdk-go-base/pull/5)
+* [Issue on GitHub](https://github.com/hashicorp/aws-sdk-go-base/issues/4)
