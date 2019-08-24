@@ -1,6 +1,8 @@
 # assume with credproc
 This tests assumption of a role while using a credential process. Because of logic issues in the way credentials are processed, when on the credential process logical path, you cannot also assume a role. This is basically the same test as [credproc_without_assume](../credproc_without_assume) but adding the assumption of a role to show that causes problems.
 
+**NOTE:** Because this test messes with Terraform to the point where it won't destroy resources, this test uses AWSCLI to delete the IAM role created in the test.
+
 ## current status
 ### FAILING :x:
 
