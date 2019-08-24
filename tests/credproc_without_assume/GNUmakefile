@@ -1,5 +1,8 @@
 #!make
 include .env
+unexport $(env | grep TF_LOG | sed 's/=.*//')
+unexport $(env | grep TF_VAR | sed 's/=.*//')
+unexport $(env | grep AWS_ | sed 's/=.*//')
 export $(shell sed 's/=.*//' .env)
 mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
 current_dir := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
