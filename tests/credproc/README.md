@@ -1,5 +1,10 @@
 # credproc without assume
-This tests using the credential process to obtain credentials. This is basically the same test as [assume_with_credproc](../assume_with_credproc) without the assumption of a role to show everything else works.
+This is the most basic _credential process_ test. In this test, no roles are assumed, the default profile is used, no S3 backends, just the most basic credential process test.
+
+The credential process tests:
+1. [credproc](../credproc)
+1. [credproc_assume_role](../credproc_assume_role)
+1. [credproc_nondefault_profile](../credproc_nondefault_profile)]
 
 ## current status
 ### PASSING :+1:

@@ -14,8 +14,9 @@ $ make test
 | Test  | Status | Issue |
 | ------------- | ------------- | ------------- |
 | [static_terraform](tests/static_terraform)  | :+1:  | None  |
-| [assume_with_credproc](tests/assume_with_credproc)  | :x:  | [hashicorp/aws-sdk-go-base#4](https://github.com/hashicorp/aws-sdk-go-base/issues/4)  |
-| [credproc_without_assume](tests/credproc_without_assume)  | :+1:  | None |
+| [credproc](tests/credproc)  | :+1:  | None |
+| [credproc_nondefault_profile](tests/credproc_nondefault_profile)  | :+1:  | None |
+| [credproc_assume_role](tests/credproc_assume_role)  | :x:  | [hashicorp/aws-sdk-go-base#4](https://github.com/hashicorp/aws-sdk-go-base/issues/4)  |
 | [assume_after_create](tests/assume_after_create)  | :x:  | [terraform-providers/terraform-provider-aws#6566](https://github.com/terraform-providers/terraform-provider-aws/issues/6566) |
 | [assume_after_create_workaround](tests/assume_after_create_workaround)  | :+1:  | [terraform-providers/terraform-provider-aws#6566](https://github.com/terraform-providers/terraform-provider-aws/issues/6566) |
 
@@ -30,10 +31,14 @@ Making a new test:
 1. `git checkout -b my-awesome-test`
 1. `cd tests`
 1. `cp -R existing_similar_test new_name_for_your_test`
-1. Edit the `README.md`, `dotenv` and `*.tf` files for your test
+1. `cd new_name_for_your_test`
+1. Edit the `README.md`, `dotenv` and `*.tf` files in `new_name_for_your_test`
+1. Run your test using the makefile (`make` which is equivalent to `make test`) - make will setup the environment and run Terraform for you
+  1. If your test is successful, `make` will `destroy` and clean up in the same pass
+  1. If your test is not successful, `make clean` should get rid of the resources and files (will also get rid of the logs which are helpful in debugging) (**WARNING**: some tests might leave resources that you'll have to manually delete in the AWS console/CLI)
 1. Edit this `README.md` with the test name and status
 1. `git add .`
-1. `git commit -m "My awesome test"`
+1. `git commit -m "Add new test for ____"`
 1. `git push -u my-awesome-test`
 1. Go to GitHub and open a pull request!
 
