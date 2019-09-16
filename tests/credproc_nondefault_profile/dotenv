@@ -3,7 +3,6 @@ AWS_SHARED_CREDENTIALS_FILE=credproc.ini
 TF_LOG_PATH=terraform.log
 TF_LOG=DEBUG
 
-TF_VAR_role_name=tf-test-6d3868d9bed3
 TF_VAR_aws_region=us-east-1
 
 credproc_access_key=replace_with_value

@@ -3,7 +3,10 @@ AWS_SHARED_CREDENTIALS_FILE=credproc.ini
 TF_LOG_PATH=terraform.log
 TF_LOG=DEBUG
 
-TF_VAR_aws_region=us-east-1
+TF_VAR_aws_region=replace_with_value
 
+s3_region=replace_with_value
+s3_backend_bucket=replace_with_value
+s3_backend_key=replace_with_value
 credproc_access_key=replace_with_value
 credproc_secret_access_key=replace_with_value

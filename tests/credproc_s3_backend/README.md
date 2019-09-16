@@ -1,5 +1,7 @@
-# credproc without assume
-This is the most basic _credential process_ test. In this test, no roles are assumed, the default profile is used, no S3 backends, just the most basic credential process test.
+# credproc with s3 backend
+This test covers using a _credential process_ with an S3 backend. At one point, this test did not work but now does. 
+
+This test is a bit trickier than the others because variables cannot be used to provide S3 backend configuration. **This test has no `main.tf`.** To maintain the same ease of running the test as the other tests, the Makefile uses sed to replace placeholders in a file called `main.pre-tf` which then becomes `main.tf`.
 
 The credential process tests:
 1. [credproc](../credproc)
@@ -11,7 +13,7 @@ The credential process tests:
 ### PASSING :+1:
 
 ## related github issue
-None
+https://github.com/terraform-providers/terraform-provider-aws/issues/6913
 
 ## creds source
 Credentials in this test come from a credential process, a simple Bash script that outputs the credentials.
@@ -23,6 +25,9 @@ To run the test, follow these steps:
 * Make a copy of the `dotenv` file named `.env` (`cp dotenv .env`)
 * Provide these values in `.env`:
     * TF_VAR_aws_region
+    * s3_region
+    * s3_backend_bucket
+    * s3_backend_key
     * credproc_access_key
     * credproc_secret_access_key
 * Run `make`
