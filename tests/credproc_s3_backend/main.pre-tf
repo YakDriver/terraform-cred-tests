@@ -1,0 +1,14 @@
+terraform {
+  backend "s3" {
+    bucket = "s3_backend_bucket"
+    key    = "s3_backend_key"
+    region = "s3_region"
+  }
+}
+
+provider "aws" {
+  region = var.aws_region
+}
+
+# Grab the ARN of the current logged in user
+data "aws_caller_identity" "current" {}
