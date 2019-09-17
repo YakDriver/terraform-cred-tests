@@ -1,5 +1,4 @@
 {
     "status_passing": true,
-    "github_issue_link": "hashicorp/aws-sdk-go-base#4",
-    "github_issue_url": "https://github.com/hashicorp/aws-sdk-go-base/issues/4"
+    "github_issue_url": "https://github.com/terraform-providers/terraform-provider-aws/issues/6913"
 }
