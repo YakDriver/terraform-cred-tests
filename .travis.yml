@@ -17,7 +17,11 @@ jobs:
         - chmod +x $PWD/jq
       script:
         - jq --version
-        - find tests -maxdepth 1 -mindepth 1 -type d -print0 | xargs -0 cat {}/test.json | jq '.status_passing'
+        - ./update_readme.sh
+        - rm jq
         - |
-          # make sure test.json exists in each test directory
-
+          status=$(git status)          
+          if [[ "${status}" != *"working tree clean"* ]]; then
+            echo "Changes needed to README.md - please update with update_readme.sh and commit change"
+            exit 1
+          fi

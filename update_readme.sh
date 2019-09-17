@@ -39,5 +39,7 @@ printf "<!-- REPLACE END" >> "${file}"
 new_table=$(cat "${file}")
 
 perl -pe "BEGIN{undef $/;} s^REPLACE BEGIN.*REPLACE END^${new_table}^smg" README.md > README1.md
+
+# clean up
 rm "${file}"
 mv README1.md README.md
