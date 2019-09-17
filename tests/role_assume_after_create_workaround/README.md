@@ -1,8 +1,21 @@
 # assume after create
-This tests assumption of a newly created role. Due to eventual consistency, it takes 10-20 seconds after creation before a role can be assumed. This test fails because of that.
+This tests assumption of a newly created role. Due to eventual consistency, it takes 10-20 seconds after creation before a role can be assumed. A test showing the failure is [here](../role_assume_after_create). This test shows a `local-exec` provisioner workaround for the problem:
+
+```hcl
+resource "aws_iam_role" "tf-test-26254acfae64" {
+  name = "tf-test-26254acfae64"
+  path = "/test/"
+
+  assume_role_policy = <<omitted>>
+
+  provisioner "local-exec" {
+    command = "sleep 30"
+  }
+}
+```
 
 ## current status
-### FAILING :x:
+### PASSING :+1:
 
 ## related github issue
 https://github.com/terraform-providers/terraform-provider-aws/issues/6566
@@ -18,9 +31,5 @@ To run the test, follow these steps:
 * Optionally provide these values in `.env`:
     * TF_VAR_aws_region
 * Run `make test`
-
-## a workaround
-
-There's a pretty easy, ugly workaround for this. See it here: [assume_after_create_workaround](../assume_after_create_workaround).
 
 **NOTE:** Git will not upload `.env` to GitHub since it is included in `.gitignore`. Make sure _not_ to include secrets in the file called `dotenv`.

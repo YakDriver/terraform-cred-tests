@@ -1,0 +1,28 @@
+language: sh
+stages:
+  - lint
+  - check
+
+jobs:
+  include:
+    - stage: lint
+      install:
+        - curl https://raw.githubusercontent.com/plus3it/terraform-bootstrap/master/install.sh | bash
+      script:
+        - terraform -v
+        - find tests -maxdepth 1 -mindepth 1 -type d -exec terraform fmt -check=true {} \;
+    - stage: check
+      install:
+        - curl -sO http://stedolan.github.io/jq/download/linux64/jq
+        - chmod +x $PWD/jq
+      script:
+        - jq --version
+        - find tests -maxdepth 1 -mindepth 1 -type d -print0 | xargs -0 cat {}/test.json | jq '.status_passing'
+        - |
+          # make sure test.json exists in each test directory
+          find tests -maxdepth 1 -mindepth 1 -type d | while read line; do
+            if [ ! -f $line/test.json ]; then
+              echo "ERROR - $line has no test.json file"
+              exit 1
+            fi
+          done
