@@ -1,0 +1,27 @@
+language: sh
+stages:
+  - lint
+  - check
+
+jobs:
+  include:
+    - stage: lint
+      install:
+        - curl https://raw.githubusercontent.com/plus3it/terraform-bootstrap/master/install.sh | bash
+      script:
+        - terraform -v
+        - find tests -maxdepth 1 -mindepth 1 -type d -exec terraform fmt -check=true {} \;
+    - stage: check
+      install:
+        - curl -sO http://stedolan.github.io/jq/download/linux64/jq
+        - chmod +x $PWD/jq
+      script:
+        - jq --version
+        - ./update_readme.sh
+        - rm jq
+        - |
+          status=$(git status)          
+          if [[ "${status}" != *"working tree clean"* ]]; then
+            echo "Changes needed to README.md - please update with update_readme.sh and commit change"
+            exit 1
+          fi
